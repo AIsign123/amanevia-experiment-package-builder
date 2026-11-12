@@ -1,0 +1,67 @@
+:root {
+  --bg: #fafaf8; --card: #fff; --text: #1f1f1d; --muted: #5f5e5a; --line: #d8d6cf;
+  --accent: #185fa5; --accent-bg: #e6f1fb;
+  --ok: #3b6d11; --ok-bg: #eaf3de;
+  --warn: #854f0b; --warn-bg: #faeeda;
+  --ng: #a32d2d; --ng-bg: #fcebeb;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1b19; --card: #262624; --text: #ecebe6; --muted: #a8a69e; --line: #3d3d3a;
+    --accent: #85b7eb; --accent-bg: #0c447c;
+    --ok: #c0dd97; --ok-bg: #27500a; --warn: #fac775; --warn-bg: #633806; --ng: #f7c1c1; --ng-bg: #791f1f;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.65 system-ui, "Hiragino Sans", "Yu Gothic UI", sans-serif; }
+.top { padding: 20px 24px 8px; max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 22px; font-weight: 500; margin: 0 0 6px; }
+h2 { font-size: 16px; font-weight: 500; margin: 24px 0 10px; }
+.note { margin: 0; font-size: 13px; color: var(--muted); }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; max-width: 1100px; margin: 0 auto; padding: 0 24px 48px; }
+@media (max-width: 800px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+.cards { display: grid; gap: 8px; }
+.card { text-align: left; padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); cursor: pointer; font: inherit; }
+.card:hover { border-color: var(--accent); }
+.card[aria-checked="true"] { border: 2px solid var(--accent); padding: 9px 13px; }
+.card b { font-weight: 500; display: block; }
+.card span { font-size: 13px; color: var(--muted); }
+.form { display: grid; gap: 10px; }
+.field { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 10px; align-items: center; }
+.field label { font-size: 14px; color: var(--muted); }
+.field input, .field select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); font: inherit; }
+.field input[aria-invalid="true"] { border-color: var(--ng); }
+.unit { font-size: 13px; color: var(--muted); }
+.row { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; }
+button { padding: 7px 14px; border: 1px solid var(--accent); border-radius: 8px; background: var(--accent); color: #fff; font: inherit; cursor: pointer; }
+@media (prefers-color-scheme: dark) { button { color: #0b0b0b; } }
+button.ghost { background: transparent; color: var(--accent); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.modules { display: grid; gap: 6px; }
+.mod { display: flex; gap: 10px; align-items: center; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+.mod small { color: var(--muted); }
+.steps { margin: 0; padding-left: 22px; }
+.steps li { padding: 4px 0; }
+.steps .meta { color: var(--muted); font-size: 13px; }
+.verdict { padding: 12px 16px; border-radius: 12px; font-weight: 500; }
+.verdict.auto { background: var(--ok-bg); color: var(--ok); }
+.verdict.needs_approval { background: var(--warn-bg); color: var(--warn); }
+.verdict.blocked { background: var(--ng-bg); color: var(--ng); }
+.findings { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 8px; }
+.finding { padding: 10px 14px; border: 1px solid var(--line); border-left-width: 4px; border-radius: 0; background: var(--card); }
+.finding.block { border-left-color: var(--ng); }
+.finding.approval { border-left-color: var(--warn); }
+.finding.info { border-left-color: var(--accent); }
+.finding .t { font-weight: 500; display: flex; gap: 8px; align-items: baseline; }
+.finding .t .badge { flex: none; margin-right: 0; }
+.finding .d { font-size: 13px; color: var(--muted); }
+.finding .f { font-size: 13px; }
+.badge { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 8px; margin-right: 6px; }
+.badge.block { background: var(--ng-bg); color: var(--ng); }
+.badge.approval { background: var(--warn-bg); color: var(--warn); }
+.badge.info { background: var(--accent-bg); color: var(--accent); }
+.approval { display: grid; gap: 8px; margin-bottom: 8px; }
+.approval .field { grid-template-columns: 110px minmax(0, 1fr); }
+.msg { min-height: 1.5em; font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+.empty { color: var(--muted); font-size: 14px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
